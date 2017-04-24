@@ -3,7 +3,7 @@ package Events;
 public class Plugin1 extends Main {
 
 	Plugin1() {
-		RegisterEvent.add(this);
+		HandlerList.registerEvent(this);
 	}
 
 	@EventHandler

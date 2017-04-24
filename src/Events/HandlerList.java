@@ -5,13 +5,13 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterEvent {
+public class HandlerList {
 
-	public static List<Object> eventContainers = new ArrayList<Object>();
+	public static List<Object> Handlers = new ArrayList<Object>();
 
 	public static <T> T callEvent(T e) {
 	    Method[] methods;
-	    for (Object o : eventContainers) {
+	    for (Object o : Handlers) {
 	        methods = o.getClass().getMethods();
 	        for (Method m : methods) {
 	            if (m.getAnnotation(EventHandler.class) != null) {
@@ -32,7 +32,11 @@ public class RegisterEvent {
 		return (T) e;
 	}
 
-	public static void add(Object o) {
-		eventContainers.add(o);
+	public static void registerEvent(Object o) {
+		Handlers.add(o);
+	}
+
+	public static void ungisterEvent(Object o) {
+		Handlers.remove(o);
 	}
 }
