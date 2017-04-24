@@ -14,5 +14,6 @@ public class Plugin1 extends Main {
 	@EventHandler
 	public void on(MyEvent2 e) {
 		System.out.println("plugin 1 "+e.getList());
+		e.setCancelled(true);
 	}
 }

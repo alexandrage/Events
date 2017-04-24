@@ -9,7 +9,7 @@ public class RegisterEvent {
 
 	public static List<Object> eventContainers = new ArrayList<Object>();
 
-	public static void callEvent(Event e) {
+	public static <T> T callEvent(T e) {
 	    Method[] methods;
 	    for (Object o : eventContainers) {
 	        methods = o.getClass().getMethods();
@@ -29,6 +29,7 @@ public class RegisterEvent {
 	            }
 	        }
 	    }
+		return (T) e;
 	}
 
 	public static void add(Object o) {
