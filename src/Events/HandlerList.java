@@ -7,7 +7,7 @@ import java.util.List;
 
 public class HandlerList {
 
-	public static List<Object> Handlers = new ArrayList<Object>();
+	public static List<Listener> Handlers = new ArrayList<Listener>();
 
 	public static <T> T callEvent(T e) {
 	    Method[] methods;
@@ -32,11 +32,11 @@ public class HandlerList {
 		return (T) e;
 	}
 
-	public static void registerEvent(Object o) {
+	public static void registerEvent(Listener o) {
 		Handlers.add(o);
 	}
 
-	public static void ungisterEvent(Object o) {
+	public static void ungisterEvent(Listener o) {
 		Handlers.remove(o);
 	}
 }

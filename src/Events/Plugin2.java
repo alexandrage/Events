@@ -1,13 +1,13 @@
 package Events;
 
-public class Plugin2 {
+public class Plugin2 extends Plugin implements Listener {
 
-	Plugin2() {
+	public void onEnable() {
 		HandlerList.registerEvent(this);
 	}
 
 	@EventHandler
 	public void on(MyEvent e) {
-		System.out.println("plugin 2 "+e.getS());
+		System.out.println("plugin 2 " + e.getS());
 	}
 }
