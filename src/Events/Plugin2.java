@@ -1,6 +1,6 @@
 package Events;
 
-public class Plugin2 extends Main {
+public class Plugin2 {
 
 	Plugin2() {
 		HandlerList.registerEvent(this);
