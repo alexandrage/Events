@@ -9,27 +9,23 @@ public class HandlerList {
 
 	public static List<Listener> Handlers = new ArrayList<Listener>();
 
-	public static <T> T callEvent(T e) {
-	    Method[] methods;
-	    for (Object o : Handlers) {
-	        methods = o.getClass().getMethods();
-	        for (Method m : methods) {
-	            if (m.getAnnotation(EventHandler.class) != null) {
-	                try {
-	                    if (m.getParameterTypes()[0].isAssignableFrom(e.getClass())) {
-	                        m.invoke(o, e);
-	                    }
-	                } catch (IllegalAccessException ex) {
-	                	ex.printStackTrace();
-	                } catch (IllegalArgumentException ex) {
-	                	ex.printStackTrace();
-	                } catch (InvocationTargetException ex) {
-	                	ex.printStackTrace();
-	                }
-	            }
-	        }
-	    }
-		return (T) e;
+	public static Event callEvent(Event e) {
+		Method[] methods;
+		for (Object o : Handlers) {
+			methods = o.getClass().getMethods();
+			for (Method m : methods) {
+				if (m.getAnnotation(EventHandler.class) != null) {
+					try {
+						if (m.getParameterTypes()[0].isAssignableFrom(e.getClass())) {
+							m.invoke(o, e);
+						}
+					} catch (IllegalAccessException | InvocationTargetException ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		}
+		return e;
 	}
 
 	public static void registerEvent(Listener o) {
